@@ -1,47 +1,63 @@
 {
   "name": "ember-addon-auth",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Bayzat Ember addon for ember-addon-auth",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-bz-addon"
   ],
-  "license": "MIT",
-  "author": "",
+  "private": true,
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/tbayaa/ember-addon-auth",
   "scripts": {
-    "build": "ember build",
+    "build": "npm run deps && ember build",
+    "changelog": "github-changes -o tbayaa -r ember-addon-auth -a --use-commit-body",
+    "clean": "rm -rf dist tmp node_modules bower_components",
+    "deps": "npm set progress=false && npm install && bower install",
+    "lint": "eslint *.js app addon tests config blueprints --fix",
+    "postversion": "rm CHANGELOG.md.bak",
     "start": "ember server",
-    "test": "ember try:each"
+    "test": "ember test",
+    "version": "npm run changelog && sed -i '.bak' \"s/### upcoming/### $npm_package_version/g\" CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.3.0"
+    "ember-cli-babel": "^5.1.7",
+    "ember-cli-htmlbars": "^1.1.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
-    "ember-ajax": "^3.0.0",
-    "ember-cli": "~2.15.1",
-    "ember-cli-dependency-checker": "^2.0.0",
-    "ember-cli-eslint": "^4.0.0",
-    "ember-cli-htmlbars": "^2.0.1",
-    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
+    "ember-addon-blueprint": "git@github.com:tbayaa/ember-addon-blueprint",
+    "ember-addon-lint-blueprint": "git@github.com:tbayaa/ember-addon-lint-blueprint",
+    "ember-ajax": "^2.4.1",
+    "ember-cli": "2.12.3",
+    "ember-cli-dependency-checker": "^1.3.0",
+    "ember-cli-eslint": "3.1.0",
+    "ember-cli-htmlbars-inline-precompile": "^0.3.6",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0",
-    "ember-cli-shims": "^1.1.0",
+    "ember-cli-qunit": "^3.1.0",
+    "ember-cli-sass-lint": "1.0.5",
+    "ember-cli-shims": "^1.0.2",
     "ember-cli-sri": "^2.1.0",
+    "ember-cli-template-lint": "0.7.3",
     "ember-cli-uglify": "^1.2.0",
-    "ember-disable-prototype-extensions": "^1.1.2",
-    "ember-export-application-global": "^2.0.0",
-    "ember-load-initializers": "^1.0.0",
-    "ember-resolver": "^4.0.0",
-    "ember-source": "~2.15.0",
-    "loader.js": "^4.2.3"
+    "ember-data": "~2.12.0",
+    "ember-export-application-global": "^1.0.5",
+    "ember-load-initializers": "^0.6.0",
+    "ember-resolver": "^2.0.3",
+    "ember-source": "~2.12.2",
+    "eslint-config-bayzat": "github:tbayaa/eslint-config#v1.3.2",
+    "github-changes": "^1.0.4",
+    "loader.js": "^4.2.3",
+    "phantomjs-prebuilt": "^2.1.13"
   },
   "engines": {
-    "node": "^4.5 || 6.* || >= 7.*"
+    "node": ">= 5.7.0"
+  },
+  "bayzat-addon": {
+    "topLevelDependencies": []
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

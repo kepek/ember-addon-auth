@@ -1,5 +1,6 @@
 module.exports = {
-  env: {
-    embertest: true
-  }
-};
+    env: {
+        'embertest': true
+    },
+    fix: true
+}
