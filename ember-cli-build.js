@@ -12,7 +12,7 @@ module.exports = function(defaults) {
     }
 
     if (env === 'test') {
-        config['ember-cli-babel'].optional = ['es6.spec.symbols'];
+        config['ember-cli-babel'].optional = ['es6.spec.symbols']
     }
 
     var app = new EmberAddon(defaults, config)
